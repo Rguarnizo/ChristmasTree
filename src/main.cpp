@@ -1,29 +1,27 @@
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
-#ifdef __AVR__
-  #include <avr/power.h>
-#endif
-#define PIN        6
-#define NUMPIXELS 8
 
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-#define DELAYVAL 500
+Adafruit_NeoPixel listPixels[2];
 
-void setup() {
-#if defined(__AVR_ATtiny85__) && (F_CPU == 16000000)
-  clock_prescale_set(clock_div_1);
-#endif
 
-  pixels.begin();
+void setup(){
+
+    for(int i = 0; i < 2;i++){
+      listPixels[i] = Adafruit_NeoPixel(8,i+2,NEO_GRB + NEO_KHZ800);
+      listPixels[i].begin();
+    }
 }
 
-void loop() {
-  pixels.clear();
 
-  for(int i=0; i<NUMPIXELS; i++) {
+void loop(){
+  
 
-    pixels.setPixelColor(i, pixels.Color(0, 150, 0));
-    pixels.show();
-    delay(DELAYVAL);
+  for(int i = 0;i < 2;i++){
+    for(int j =0; j < 8;j++){
+      listPixels[i].setPixelColor(j,listPixels[i].Color(0,150,0));
+      listPixels[i].show();
+      delay(200);
+    }
+    listPixels[i].clear();
   }
 }
