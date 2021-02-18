@@ -1,29 +1,40 @@
 #include <Strip.h>
 #include <Arduino.h>
 
- Strip strip = Strip(8,2);
- int i = 0;
+
+#define NUMSTRIPS 2
+#define NUMSTRIPSLEDS 8
+
+#define CLKAPP 100
+
+unsigned long timeClock = 0;
+
+Strip strips[NUMSTRIPS];
 
 void setup(){   
+
+  for(int i = 0; i < NUMSTRIPS; i++){
+    strips[i] = Strip(NUMSTRIPSLEDS,i+2);
+  }
+
   Serial.begin(9600);
 }
 
 
 void loop(){
 
-  
+  if((unsigned long) millis() - timeClock>= CLKAPP){
+    timeClock = millis();
+    Serial.println(timeClock);
 
-  if((unsigned long) (millis()-strip.getPreviousMillis()) >= strip.getTime()){
-    strip.setPreviousMillis(millis());    
-    Serial.println(strip.getPreviousMillis());
-    strip.strip.setPixelColor(i,strip.strip.Color(0,50,0));
-    strip.strip.show();
-    i++;
-    if(i == 7){
-      strip.strip.clear();
-      i = 0;
-    }
-  }   
+    for(int i = 0; i > NUMSTRIPS;i++){
+      
+      Strip strip = strips[i];
+      
+
+  }
+
+
 }
   
 
