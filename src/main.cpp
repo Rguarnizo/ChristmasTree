@@ -26,10 +26,10 @@ void loop(){
   if((unsigned long) millis() - timeClock>= CLKAPP){
     timeClock = millis();
     
-
+    Serial.println(timeClock);
     for(int i = 0; i < NUMSTRIPS;i++){      
       Strip strip = strips[i];
-      Serial.println(timeClock);
+      
       strip.showSequence();
     }
 

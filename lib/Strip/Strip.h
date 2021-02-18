@@ -6,7 +6,7 @@
 
 class Strip
 {
-private:
+protected:
 
     uint8_t _nLeds;
     uint8_t _pin;
@@ -14,7 +14,7 @@ private:
     
 
     unsigned long time = 200;
-    unsigned long previusMillis;
+    
 
     
     void (Strip::*f)() = NULL;
@@ -28,7 +28,7 @@ public:
 
 
     Strip(uint8_t nLeds,uint8_t pin);
-    Strip();
+    Strip(void);
 
     
      
@@ -39,11 +39,10 @@ public:
     void setTime(unsigned long n);
     
     void showSequence();
-
-    
-
-    
-
     ~Strip();
+
+    unsigned long previusMillis;
+    
 };
+    
 #endif

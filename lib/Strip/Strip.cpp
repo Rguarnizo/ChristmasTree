@@ -39,11 +39,17 @@ void Strip::setTime(unsigned long n){
 }
 
 void Strip:: showSequence(){
-    
-        (*this.*f)();
+
+    static unsigned long previusMillis = 0;
+
+    if(millis() - previusMillis >= time){        
+        previusMillis = millis();
+        Serial.print("Print in time: " );
+        Serial.println(previusMillis);
+    }
     
 }
 
 void Strip::print(){
-    Serial.println("Print function");
+    
 }
