@@ -4,6 +4,10 @@
 #ifndef Strip_h
 #define Strip_h
 
+#include <Arduino.h>
+
+
+
 class Strip
 {
 protected:
@@ -24,10 +28,11 @@ protected:
 public:
 
     Adafruit_NeoPixel strip;
+    String stripName;
 
 
 
-    Strip(uint8_t nLeds,uint8_t pin);
+    Strip(uint8_t nLeds,uint8_t pin,unsigned long time);
     Strip(void);
 
     

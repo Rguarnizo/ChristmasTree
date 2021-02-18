@@ -3,12 +3,12 @@
 
 
 
-Strip::Strip(uint8_t nLeds,uint8_t pin):strip(nLeds,pin,NEO_GRB + NEO_KHZ800)
+Strip::Strip(uint8_t nLeds,uint8_t pin,unsigned long time):strip(nLeds,pin,NEO_GRB + NEO_KHZ800)
 {
     _nLeds =nLeds;
     _pin = pin;
     strip.begin();    
-    time = 1000;
+    this->time = time;
     f = &Strip::print;
 
 }

@@ -14,7 +14,7 @@ Strip strips[NUMSTRIPS];
 void setup(){   
 
   for(int i = 0; i < NUMSTRIPS; i++){
-    strips[i] = Strip(NUMSTRIPSLEDS,i+2);
+    strips[i] = Strip(NUMSTRIPSLEDS,i+2,200+300*i);
   }
 
   Serial.begin(9600);
@@ -32,9 +32,7 @@ void loop(){
       
       strip.showSequence();
     }
-
   } 
-
 }
   
 
