@@ -17,6 +17,10 @@ private:
     unsigned long previusMillis;
 
     
+    void (Strip::*f)() = NULL;
+
+    void print();
+    
 public:
 
     Adafruit_NeoPixel strip;
@@ -33,6 +37,12 @@ public:
     
     unsigned long getTime();
     void setTime(unsigned long n);
+    
+    void showSequence();
+
+    
+
+    
 
     ~Strip();
 };

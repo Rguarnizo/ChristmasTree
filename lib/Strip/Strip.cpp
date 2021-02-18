@@ -10,6 +10,7 @@ Strip::Strip(uint8_t nLeds,uint8_t pin):strip(nLeds,pin,NEO_GRB + NEO_KHZ800)
     strip.begin();
     previusMillis = 0;
     time = 1000;
+    f = &Strip::print;
 
 }
 
@@ -35,4 +36,14 @@ unsigned long Strip::getTime(){
 
 void Strip::setTime(unsigned long n){
     time = n;
+}
+
+void Strip:: showSequence(){
+    
+        (*this.*f)();
+    
+}
+
+void Strip::print(){
+    Serial.println("Print function");
 }
