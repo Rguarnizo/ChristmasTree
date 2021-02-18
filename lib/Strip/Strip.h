@@ -40,8 +40,6 @@ public:
     
     void showSequence();
     ~Strip();
-
-    unsigned long previusMillis;
     
 };
     

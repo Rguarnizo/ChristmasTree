@@ -7,8 +7,7 @@ Strip::Strip(uint8_t nLeds,uint8_t pin):strip(nLeds,pin,NEO_GRB + NEO_KHZ800)
 {
     _nLeds =nLeds;
     _pin = pin;
-    strip.begin();
-    previusMillis = 0;
+    strip.begin();    
     time = 1000;
     f = &Strip::print;
 
@@ -23,13 +22,6 @@ Strip::~Strip()
 {
 }
 
-unsigned long Strip::getPreviousMillis(){
-    return previusMillis;
-}
-
-void Strip::setPreviousMillis(unsigned long n){
-    previusMillis = n;
-}
 unsigned long Strip::getTime(){
     return time;
 }
