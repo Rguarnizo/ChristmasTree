@@ -57,7 +57,7 @@ void Strip::maintainIncrese(){
 }
 
 
-void Strip::maintainDecrece(){
+void Strip::maintainDecrese(){
     
     this->strip.setPixelColor(led,color);
     this->strip.show();
