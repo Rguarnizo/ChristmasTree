@@ -18,6 +18,7 @@ protected:
     
 
     unsigned long time = 200;
+    unsigned long previusMillis = 0;
     
 
     
