@@ -23,8 +23,7 @@ void setup(){
 
 void loop(){
 
-  if((unsigned long) millis() - timeClock >= CLKAPP){
-    timeClock = millis();
+  
     
     Serial.println(timeClock);
     for(int i = 0; i < NUMSTRIPS;i++){      
@@ -32,7 +31,7 @@ void loop(){
       
       strip->showSequence();
     }
-  } 
+  
 }
   
 
