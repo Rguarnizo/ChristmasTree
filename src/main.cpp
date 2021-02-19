@@ -15,6 +15,7 @@ void setup(){
   }
 
   strips[0]->changeMode(1);
+  strips[0]->changeColor(50,0,50);
   strips[1]->changeMode(3);
   Serial.begin(9600);
 }

@@ -50,6 +50,12 @@ public:
     void  maintainDecrese();
     void oddPairs();
     
+
+
+
+
+    void changeColor(uint8_t r,uint8_t g,uint8_t b);
+    
     void showSequence();
     ~Strip();
     

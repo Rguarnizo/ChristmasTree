@@ -119,3 +119,7 @@ void Strip::changeMode(int mode){
         
     }
 }
+
+void Strip::changeColor(uint8_t r,uint8_t g,uint8_t b){
+    this->color = strip.Color(r,g,b);
+}
