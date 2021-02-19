@@ -23,11 +23,12 @@ void setup(){
 
 void loop(){
 
-    Serial.println(timeClock);
+    
     for(int i = 0; i < NUMSTRIPS;i++){      
       Strip* strip = &strips[i];
       
       strip->showSequence();
+      strip->strip.show();
     }
 }
   
