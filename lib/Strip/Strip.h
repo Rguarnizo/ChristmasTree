@@ -43,6 +43,9 @@ public:
     unsigned long getTime();
     void setTime(unsigned long n);
     
+
+    void changeMode(int mode);
+
     void  maintainIncrese();
     void  maintainDecrese();
     

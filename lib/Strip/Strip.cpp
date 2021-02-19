@@ -76,3 +76,24 @@ void Strip::maintainDecrese(){
 void Strip::print(){
     Serial.println("Is working !!!");
 }
+
+void Strip::changeMode(int mode){
+    switch(mode){
+        case 1:
+            f = &Strip::print;
+            break;
+        case 2:
+            f = &Strip::print;
+            break; 
+        case 3:
+            f = &Strip::print;
+            break;
+        case 4: 
+            f = &Strip::print;
+            break;
+        default: 
+            f = &Strip::print;
+            break;
+        
+    }
+}
