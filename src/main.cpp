@@ -14,6 +14,8 @@ void setup(){
     strips[i] = new Strip(NUMSTRIPSLEDS,i+2,200+(i*300));
   }
 
+  strips[0]->changeMode(1);
+  strips[1]->changeMode(2);
   Serial.begin(9600);
 }
 

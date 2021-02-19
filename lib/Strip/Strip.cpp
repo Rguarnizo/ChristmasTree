@@ -38,7 +38,7 @@ void Strip::showSequence(){
         previusMillis = millis();
         Serial.print("Print in time: " );
         Serial.println(previusMillis);
-        this->maintainDecrese();
+        (*this.*f)();
     }
     
 }
@@ -80,10 +80,10 @@ void Strip::print(){
 void Strip::changeMode(int mode){
     switch(mode){
         case 1:
-            f = &Strip::print;
+            f = &Strip::maintainIncrese;
             break;
         case 2:
-            f = &Strip::print;
+            f = &Strip::maintainDecrese;
             break; 
         case 3:
             f = &Strip::print;
