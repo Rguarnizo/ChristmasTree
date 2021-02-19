@@ -2,19 +2,16 @@
 #include <Arduino.h>
 
 
-#define NUMSTRIPS 1
+#define NUMSTRIPS 2
 #define NUMSTRIPSLEDS 8
-
-#define CLKAPP 100
-
 unsigned long timeClock = 0;
 
-Strip strips[NUMSTRIPS];
+Strip* strips[NUMSTRIPS];
 
 void setup(){   
 
   for(int i = 0; i < NUMSTRIPS; i++){
-    strips[i] = Strip(NUMSTRIPSLEDS,i+2,1000);
+    strips[i] = new Strip(NUMSTRIPSLEDS,i+2,200+(i*300));
   }
 
   Serial.begin(9600);
@@ -25,10 +22,10 @@ void loop(){
 
     
     for(int i = 0; i < NUMSTRIPS;i++){      
-      Strip* strip = &strips[i];
+      Strip* strip = strips[i];
       
       strip->showSequence();
-      strip->strip.show();
+      
     }
 }
   

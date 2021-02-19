@@ -43,12 +43,26 @@ void Strip::showSequence(){
     
 }
 
-void Strip::print(){
+void Strip::maintainIncrese(){
     
     this->strip.setPixelColor(led,color);
     this->strip.show();
     
     led++;
+
+    if(led == this->_nLeds){
+        strip.clear();
+        led = 0;
+    }
+}
+
+
+void Strip::maintainDecrece(){
+    
+    this->strip.setPixelColor(led,color);
+    this->strip.show();
+    
+    led--;
 
     if(led == this->_nLeds){
         strip.clear();

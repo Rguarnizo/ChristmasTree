@@ -43,6 +43,7 @@ public:
     unsigned long getTime();
     void setTime(unsigned long n);
     
+    
     void showSequence();
     ~Strip();
     
