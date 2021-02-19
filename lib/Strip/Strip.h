@@ -48,6 +48,7 @@ public:
 
     void  maintainIncrese();
     void  maintainDecrese();
+    void oddPairs();
     
     void showSequence();
     ~Strip();

@@ -77,6 +77,28 @@ void Strip::print(){
     Serial.println("Is working !!!");
 }
 
+void Strip::oddPairs(){
+    if(led%2 == 0){
+        this->strip.setPixelColor(led,color);
+        this->strip.show();
+        
+    } else {
+        this->strip.setPixelColor(led,color);
+        this->strip.show();
+    }
+
+    led+=2;
+
+    if(led == _nLeds){
+        led= 1;
+        this->strip.clear();
+    }else if(led == _nLeds+1){
+        led = 0;
+        this->strip.clear();
+    }
+}
+
+
 void Strip::changeMode(int mode){
     switch(mode){
         case 1:
@@ -86,7 +108,7 @@ void Strip::changeMode(int mode){
             f = &Strip::maintainDecrese;
             break; 
         case 3:
-            f = &Strip::print;
+            f = &Strip::oddPairs;
             break;
         case 4: 
             f = &Strip::print;
