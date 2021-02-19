@@ -38,7 +38,7 @@ void Strip::showSequence(){
         previusMillis = millis();
         Serial.print("Print in time: " );
         Serial.println(previusMillis);
-        print();
+        this->maintainDecrese();
     }
     
 }
@@ -59,13 +59,20 @@ void Strip::maintainIncrese(){
 
 void Strip::maintainDecrese(){
     
+
+    if(led == 0){
+        strip.clear();
+        led = 8;
+    }
+
     this->strip.setPixelColor(led,color);
     this->strip.show();
     
     led--;
 
-    if(led == this->_nLeds){
-        strip.clear();
-        led = 0;
-    }
+    
+}
+
+void Strip::print(){
+    Serial.println("Is working !!!");
 }
