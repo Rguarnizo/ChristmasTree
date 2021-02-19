@@ -2,7 +2,7 @@
 #include <Arduino.h>
 
 
-#define NUMSTRIPS 4
+#define NUMSTRIPS 1
 #define NUMSTRIPSLEDS 8
 
 #define CLKAPP 100
@@ -14,7 +14,7 @@ Strip strips[NUMSTRIPS];
 void setup(){   
 
   for(int i = 0; i < NUMSTRIPS; i++){
-    strips[i] = Strip(NUMSTRIPSLEDS,i+2,200);
+    strips[i] = Strip(NUMSTRIPSLEDS,i+2,1000);
   }
 
   Serial.begin(9600);

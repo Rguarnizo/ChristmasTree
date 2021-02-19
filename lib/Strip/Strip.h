@@ -14,6 +14,7 @@ protected:
 
     uint8_t _nLeds;
     uint8_t _pin;
+    uint8_t led;
 
     uint32_t color;
 

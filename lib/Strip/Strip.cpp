@@ -7,6 +7,8 @@ Strip::Strip(uint8_t nLeds,uint8_t pin,unsigned long time):strip(nLeds,pin,NEO_G
 {
     _nLeds =nLeds;
     _pin = pin;
+    led = 0;
+    color = strip.Color(0,255,0);
     strip.begin();    
     this->time = time;
     f = &Strip::print;
@@ -42,5 +44,13 @@ void Strip:: showSequence(){
 }
 
 void Strip::print(){
-    
+    Serial.println(color);
+    strip.setPixelColor(led,color);
+    strip.show();
+    led++;
+
+    if(led == this->_nLeds){
+        strip.clear();
+        led = 0;
+    }
 }
