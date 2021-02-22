@@ -11,12 +11,12 @@ Strip* strips[NUMSTRIPS];
 void setup(){   
 
   for(int i = 0; i < NUMSTRIPS; i++){
-    strips[i] = new Strip(NUMSTRIPSLEDS,i+2,200+(i*300));
+    strips[i] = new Strip(NUMSTRIPSLEDS,i+2,200);
   }
 
-  strips[0]->changeMode(1);
+  strips[0]->changeMode(4);
   strips[0]->changeColor(50,0,0);
-  strips[1]->changeMode(3);
+  strips[1]->changeMode(4);
   strips[1]->changeColor(0,0,50);
   Serial.begin(9600);
   

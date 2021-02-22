@@ -49,6 +49,7 @@ public:
     void  maintainIncrese();
     void  maintainDecrese();
     void oddPairsNotSimultaneous();
+    void switchColors();
     
 
 

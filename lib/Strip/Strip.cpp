@@ -98,6 +98,23 @@ void Strip::oddPairsNotSimultaneous(){
     }
 }
 
+void Strip::switchColors(){
+
+    static bool switchP = true;
+    strip.clear();
+
+    for(int i = 0; i < _nLeds;i++){
+        if(i%2 == 0 && switchP){
+            strip.setPixelColor(i,color);
+        }
+        if(i%2 == 1 && !switchP){
+            strip.setPixelColor(i,color);
+        }
+    }
+    switchP = !switchP;
+    strip.show();
+}
+
 
 void Strip::changeMode(int mode){
     switch(mode){
@@ -111,7 +128,7 @@ void Strip::changeMode(int mode){
             f = &Strip::oddPairsNotSimultaneous;
             break;
         case 4: 
-            f = &Strip::print;
+            f = &Strip::switchColors;
             break;
         default: 
             f = &Strip::print;
