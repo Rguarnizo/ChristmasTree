@@ -9,7 +9,8 @@ Strip::Strip(uint8_t nLeds,uint8_t pin,unsigned long time):strip(nLeds,pin,NEO_G
     _pin = pin;
     strip.begin();
     led = 0;
-    color = strip.Color(0,255,0);    
+    primaryColor = strip.Color(0,255,0);    
+    secondaryColor = strip.Color(255,0,0);    
     this->time = time;
     f = &Strip::print;
 
@@ -45,7 +46,7 @@ void Strip::showSequence(){
 
 void Strip::maintainIncrese(){
     
-    this->strip.setPixelColor(led,color);
+    this->strip.setPixelColor(led,primaryColor);
     this->strip.show();
     
     led++;
@@ -65,7 +66,7 @@ void Strip::maintainDecrese(){
         led = 8;
     }
 
-    this->strip.setPixelColor(led,color);
+    this->strip.setPixelColor(led,primaryColor);
     this->strip.show();
     
     led--;
@@ -79,11 +80,11 @@ void Strip::print(){
 
 void Strip::oddPairsNotSimultaneous(){
     if(led%2 == 0){
-        this->strip.setPixelColor(led,color);
+        this->strip.setPixelColor(led,primaryColor);
         this->strip.show();
         
     } else {
-        this->strip.setPixelColor(led,color);
+        this->strip.setPixelColor(led,primaryColor);
         this->strip.show();
     }
 
@@ -105,10 +106,10 @@ void Strip::switchColors(){
 
     for(int i = 0; i < _nLeds;i++){
         if(i%2 == 0 && switchP){
-            strip.setPixelColor(i,color);
+            strip.setPixelColor(i,primaryColor);
         }
         if(i%2 == 1 && !switchP){
-            strip.setPixelColor(i,color);
+            strip.setPixelColor(i,primaryColor);
         }
     }
     switchP = !switchP;
@@ -138,5 +139,5 @@ void Strip::changeMode(int mode){
 }
 
 void Strip::changeColor(uint8_t r,uint8_t g,uint8_t b){
-    this->color = strip.Color(r,g,b);
+    this->primaryColor = strip.Color(r,g,b);
 }

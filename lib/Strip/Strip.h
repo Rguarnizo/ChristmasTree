@@ -16,7 +16,8 @@ protected:
     uint8_t _pin;
     uint8_t led;
 
-    uint32_t color;
+    uint32_t primaryColor;
+    uint32_t secondaryColor;
 
     unsigned long time = 200;
     unsigned long previusMillis = 0;
