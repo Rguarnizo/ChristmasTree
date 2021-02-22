@@ -77,7 +77,7 @@ void Strip::print(){
     Serial.println("Is working !!!");
 }
 
-void Strip::oddPairs(){
+void Strip::oddPairsNotSimultaneous(){
     if(led%2 == 0){
         this->strip.setPixelColor(led,color);
         this->strip.show();
@@ -108,7 +108,7 @@ void Strip::changeMode(int mode){
             f = &Strip::maintainDecrese;
             break; 
         case 3:
-            f = &Strip::oddPairs;
+            f = &Strip::oddPairsNotSimultaneous;
             break;
         case 4: 
             f = &Strip::print;

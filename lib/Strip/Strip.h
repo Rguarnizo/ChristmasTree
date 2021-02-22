@@ -48,7 +48,7 @@ public:
 
     void  maintainIncrese();
     void  maintainDecrese();
-    void oddPairs();
+    void oddPairsNotSimultaneous();
     
 
 
