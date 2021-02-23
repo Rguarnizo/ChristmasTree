@@ -186,7 +186,7 @@ void Strip::changeMode(int mode){
             f = &Strip::goAndBackOneColor;
             break;
         default: 
-            f = &Strip::print;
+            f = &Strip::goAndBackColors;
             break;
         
     }
