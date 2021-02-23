@@ -56,7 +56,8 @@ public:
 
 
 
-    void changeColor(uint8_t r,uint8_t g,uint8_t b);
+    void changePrimaryColor(uint8_t r,uint8_t g,uint8_t b);
+    void changeSecondaryColor(uint8_t r,uint8_t g,uint8_t b);
     
     void showSequence();
     ~Strip();

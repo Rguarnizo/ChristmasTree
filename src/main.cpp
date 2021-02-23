@@ -15,9 +15,11 @@ void setup(){
   }
 
   strips[0]->changeMode(4);
-  strips[0]->changeColor(50,0,0);
+  strips[0]->changePrimaryColor(50,0,0);
+  strips[1]->changeSecondaryColor(0,50,0);
   strips[1]->changeMode(4);
-  strips[1]->changeColor(0,0,50);
+  strips[1]->changePrimaryColor(0,0,50);
+  strips[1]->changeSecondaryColor(50,0,0);
   Serial.begin(9600);
   
 }
