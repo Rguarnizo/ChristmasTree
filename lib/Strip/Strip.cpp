@@ -13,6 +13,7 @@ Strip::Strip(uint8_t nLeds,uint8_t pin,unsigned long time):strip(nLeds,pin,NEO_G
     secondaryColor = strip.Color(255,0,0);    
     this->time = time;
     f = &Strip::print;
+    reverse = false;
 
 }
 
@@ -24,6 +25,7 @@ Strip::Strip()
 Strip::~Strip()
 {
 }
+
 
 unsigned long Strip::getTime(){
     return time;
@@ -101,43 +103,71 @@ void Strip::oddPairsNotSimultaneous(){
 
 void Strip::switchOneColor(){
 
-    static bool switchP = true;
+    
     strip.clear();
 
     for(int i = 0; i < _nLeds;i++){
-        if(i%2 == 0 && switchP){
+        if(i%2 == 0 && !reverse){
             strip.setPixelColor(i,primaryColor);
         }
-        if(i%2 == 1 && !switchP){
+        if(i%2 == 1 && reverse){
             strip.setPixelColor(i,primaryColor);
         }
     }
-    switchP = !switchP;
+    reverse = !reverse;
     strip.show();
 }
 
 void Strip::switchColors(){
 
-    static bool switchP = true;
+    static bool reverse = true;
 
     for(int i = 0; i < _nLeds;i++){
         if(i%2 == 0){
-            if(switchP){
+            if(reverse){
                 strip.setPixelColor(i,primaryColor);
             }else{
                 strip.setPixelColor(i,secondaryColor);
             }
         }
         if(i%2 == 1){
-            if(switchP){
+            if(reverse){
                 strip.setPixelColor(i,secondaryColor);
             }else{
                 strip.setPixelColor(i,primaryColor);
             }
         }
     }
-    switchP = !switchP;
+    reverse = !reverse;
     strip.show();
+}
+
+void Strip::goAndBackColors(){
+
+}
+
+void Strip::goAndBackOneColor(){
+    
+    static bool reverse = false;
+    
+    if(led <= _nLeds && !reverse){
+        strip.setPixelColor(led,primaryColor);
+        strip.show();
+        led++;
+        if(led == _nLeds){ 
+            strip.clear();
+            reverse = !reverse;
+         }
+    }else if(reverse){
+        strip.setPixelColor(led,primaryColor);
+        strip.show();
+        led--;
+        if(led == 0){
+            strip.clear();
+            reverse = !reverse;
+            
+        } 
+    }
 }
 
 
@@ -153,7 +183,7 @@ void Strip::changeMode(int mode){
             f = &Strip::oddPairsNotSimultaneous;
             break;
         case 4: 
-            f = &Strip::switchColors;
+            f = &Strip::goAndBackOneColor;
             break;
         default: 
             f = &Strip::print;

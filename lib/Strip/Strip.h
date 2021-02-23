@@ -15,6 +15,7 @@ protected:
     uint8_t _nLeds;
     uint8_t _pin;
     uint8_t led;
+    bool reverse;
 
     uint32_t primaryColor;
     uint32_t secondaryColor;
@@ -52,12 +53,15 @@ public:
     void oddPairsNotSimultaneous();
     void switchColors();
     void switchOneColor();
+    void goAndBackOneColor();   
+    void goAndBackColors();   
 
 
 
 
     void changePrimaryColor(uint8_t r,uint8_t g,uint8_t b);
     void changeSecondaryColor(uint8_t r,uint8_t g,uint8_t b);
+    
     
     void showSequence();
     ~Strip();

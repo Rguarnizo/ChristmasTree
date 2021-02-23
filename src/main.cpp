@@ -11,7 +11,7 @@ Strip* strips[NUMSTRIPS];
 void setup(){   
 
   for(int i = 0; i < NUMSTRIPS; i++){
-    strips[i] = new Strip(NUMSTRIPSLEDS,i+2,200);
+    strips[i] = new Strip(NUMSTRIPSLEDS,i+2,100);
   }
 
   strips[0]->changeMode(4);
