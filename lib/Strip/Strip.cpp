@@ -99,7 +99,7 @@ void Strip::oddPairsNotSimultaneous(){
     }
 }
 
-void Strip::switchColors(){
+void Strip::switchOneColor(){
 
     static bool switchP = true;
     strip.clear();
@@ -110,6 +110,30 @@ void Strip::switchColors(){
         }
         if(i%2 == 1 && !switchP){
             strip.setPixelColor(i,primaryColor);
+        }
+    }
+    switchP = !switchP;
+    strip.show();
+}
+
+void Strip::switchColors(){
+
+    static bool switchP = true;
+
+    for(int i = 0; i < _nLeds;i++){
+        if(i%2 == 0){
+            if(switchP){
+                strip.setPixelColor(i,primaryColor);
+            }else{
+                strip.setPixelColor(i,secondaryColor);
+            }
+        }
+        if(i%2 == 1){
+            if(switchP){
+                strip.setPixelColor(i,secondaryColor);
+            }else{
+                strip.setPixelColor(i,primaryColor);
+            }
         }
     }
     switchP = !switchP;

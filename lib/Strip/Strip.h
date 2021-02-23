@@ -51,7 +51,7 @@ public:
     void  maintainDecrese();
     void oddPairsNotSimultaneous();
     void switchColors();
-    
+    void switchOneColor();
 
 
 
