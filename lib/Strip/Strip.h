@@ -11,6 +11,7 @@ enum class Pattern {
     OddPairsNotSimultaneous,
     Rainbow,
     RainbowCycle,
+    OneByOne,
 
 };
 #endif
@@ -70,6 +71,7 @@ public:
     void goAndBackColors();   
     void rainbow();
     void rainbowCycle();
+    void oneByOne();
     uint32_t Wheel(byte WheelPos);
 
 

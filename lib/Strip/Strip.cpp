@@ -206,12 +206,19 @@ void Strip::rainbow(){
 
 void Strip::rainbowCycle(){
     static uint16_t j=0;
-    for(int i=0; i< strip.numPixels(); i++) {
+    for(int i=0; i < _nLeds; i++) {
       strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
     }
     strip.show();
   j++;
   if(j >= 256*5) j=0;
+}
+
+void Strip::oneByOne(){
+    strip.clear();
+    strip.setPixelColor(led,primaryColor);
+    led++;
+    if(led == _nLeds) led=0;
 }
 
 uint32_t Strip::Wheel(byte WheelPos) {
@@ -226,6 +233,8 @@ uint32_t Strip::Wheel(byte WheelPos) {
   WheelPos -= 170;
   return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
 }
+
+
 
 
 void Strip::changeMode(Pattern pattern){
@@ -243,6 +252,8 @@ void Strip::changeMode(Pattern pattern){
         case Pattern::Rainbow: f = &Strip::rainbow;
             break;
         case Pattern::RainbowCycle: f = &Strip::rainbowCycle;
+            break;
+        case Pattern::OneByOne: f = &Strip::oneByOne;
             break;
         default: f = &Strip::oddPairsNotSimultaneous;
     }
