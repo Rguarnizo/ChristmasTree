@@ -189,6 +189,34 @@ void Strip::goAndBackOneColor(){
     }
 }
 
+void Strip::rainbow(){
+
+    static int j = 0;
+
+    for(int i = 0; i < _nLeds;i++){
+        strip.setPixelColor(i,Wheel((i+j) & 255));
+    }
+
+    strip.show();
+    j++;
+    if(j >= 255){
+        j = 0;
+    }
+}
+
+uint32_t Strip::Wheel(byte WheelPos) {
+  WheelPos = 255 - WheelPos;
+  if(WheelPos < 85) {
+    return strip.Color(255 - WheelPos * 3, 0, WheelPos * 3);
+  }
+  if(WheelPos < 170) {
+    WheelPos -= 85;
+    return strip.Color(0, WheelPos * 3, 255 - WheelPos * 3);
+  }
+  WheelPos -= 170;
+  return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
+}
+
 
 void Strip::changeMode(Pattern pattern){
     switch(pattern){
@@ -201,6 +229,8 @@ void Strip::changeMode(Pattern pattern){
         case Pattern::MaintainDecrese: f = &Strip::maintainDecrese;
             break;
         case Pattern::OddPairsNotSimultaneous: f = &Strip::oddPairsNotSimultaneous;
+            break;
+        case Pattern::Rainbow: f = &Strip::rainbow;
             break;
         default: f = &Strip::oddPairsNotSimultaneous;
     }
