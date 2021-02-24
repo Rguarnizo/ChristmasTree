@@ -17,7 +17,7 @@ void setup(){
   strips[0]->changeMode(Pattern::GoBackColors);
   strips[0]->changePrimaryColor(50,0,0);
   strips[0]->changeSecondaryColor(0,50,0);
-  strips[1]->changeMode(Pattern::GoBackOneColor);
+  strips[1]->changeMode(Pattern::GoBackColors);
   strips[1]->changePrimaryColor(0,0,50);
   strips[1]->changeSecondaryColor(50,0,0);
   Serial.begin(9600);

@@ -143,7 +143,26 @@ void Strip::switchColors(){
 }
 
 void Strip::goAndBackColors(){
-
+    static bool reverse = false;
+    
+    if(led <= _nLeds && !reverse){
+        strip.setPixelColor(led,primaryColor);
+        strip.show();
+        led++;
+        if(led == _nLeds){ 
+            strip.clear();
+            reverse = !reverse;
+         }
+    }else if(reverse){
+        strip.setPixelColor(led,secondaryColor);
+        strip.show();
+        led--;
+        if(led == 0){
+            strip.clear();
+            reverse = !reverse;
+            
+        } 
+    }
 }
 
 void Strip::goAndBackOneColor(){
