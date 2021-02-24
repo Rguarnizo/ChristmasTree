@@ -12,7 +12,6 @@ enum class Pattern {
     Rainbow,
     RainbowCycle,
     OneByOne,
-
 };
 #endif
 
@@ -59,7 +58,7 @@ public:
     unsigned long getTime();
     void setTime(unsigned long n);
     
-
+   //* Principal method to change pattern with pointers of methods
     void changeMode(Pattern pattern);
 
     void  maintainIncrese();
@@ -72,9 +71,9 @@ public:
     void rainbow();
     void rainbowCycle();
     void oneByOne();
+
+
     uint32_t Wheel(byte WheelPos);
-
-
 
 
     void changePrimaryColor(uint8_t r,uint8_t g,uint8_t b);
