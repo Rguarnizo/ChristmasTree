@@ -1,12 +1,23 @@
 #include <Adafruit_NeoPixel.h>
 
 
+#ifndef Pattern_h
+#define Pattern_h
+enum class Pattern {
+    GoBackOneColor,
+    GoBackColors,
+    MaintainIncrese,
+    MaintainDecrese,
+    OddPairsNotSimultaneous,
+
+};
+#endif
+
+
 #ifndef Strip_h
 #define Strip_h
 
 #include <Arduino.h>
-
-enum Pattern;
 
 class Strip
 {
