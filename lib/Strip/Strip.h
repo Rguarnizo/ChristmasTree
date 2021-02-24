@@ -10,6 +10,7 @@ enum class Pattern {
     MaintainDecrese,
     OddPairsNotSimultaneous,
     Rainbow,
+    RainbowCycle,
 
 };
 #endif
@@ -68,6 +69,7 @@ public:
     void goAndBackOneColor();   
     void goAndBackColors();   
     void rainbow();
+    void rainbowCycle();
     uint32_t Wheel(byte WheelPos);
 
 

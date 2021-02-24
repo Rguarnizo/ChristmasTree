@@ -191,7 +191,7 @@ void Strip::goAndBackOneColor(){
 
 void Strip::rainbow(){
 
-    static int j = 0;
+    static uint16_t j = 0;
 
     for(int i = 0; i < _nLeds;i++){
         strip.setPixelColor(i,Wheel((i+j) & 255));
@@ -202,6 +202,16 @@ void Strip::rainbow(){
     if(j >= 255){
         j = 0;
     }
+}
+
+void Strip::rainbowCycle(){
+    static uint16_t j=0;
+    for(int i=0; i< strip.numPixels(); i++) {
+      strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
+    }
+    strip.show();
+  j++;
+  if(j >= 256*5) j=0;
 }
 
 uint32_t Strip::Wheel(byte WheelPos) {
@@ -231,6 +241,8 @@ void Strip::changeMode(Pattern pattern){
         case Pattern::OddPairsNotSimultaneous: f = &Strip::oddPairsNotSimultaneous;
             break;
         case Pattern::Rainbow: f = &Strip::rainbow;
+            break;
+        case Pattern::RainbowCycle: f = &Strip::rainbowCycle;
             break;
         default: f = &Strip::oddPairsNotSimultaneous;
     }
