@@ -6,7 +6,7 @@
 
 #include <Arduino.h>
 
-
+enum Pattern;
 
 class Strip
 {
@@ -46,7 +46,7 @@ public:
     void setTime(unsigned long n);
     
 
-    void changeMode(int mode);
+    void changeMode(Pattern pattern);
 
     void  maintainIncrese();
     void  maintainDecrese();

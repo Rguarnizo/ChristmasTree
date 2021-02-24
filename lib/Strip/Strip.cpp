@@ -1,7 +1,14 @@
 #include <Strip.h>
 
 
+enum Pattern {
+    GoBackOneColor,
+    GoBackColors,
+    MaintainIncrese,
+    MaintainDecrese,
+    OddPairsNotSimultaneous,
 
+};
 
 Strip::Strip(uint8_t nLeds,uint8_t pin,unsigned long time):strip(nLeds,pin,NEO_GRB + NEO_KHZ800)
 {
@@ -171,24 +178,19 @@ void Strip::goAndBackOneColor(){
 }
 
 
-void Strip::changeMode(int mode){
-    switch(mode){
-        case 1:
-            f = &Strip::maintainIncrese;
-            break;
-        case 2:
-            f = &Strip::maintainDecrese;
+void Strip::changeMode(Pattern pattern){
+    switch(pattern){
+        case GoBackOneColor: f = Strip::goAndBackOneColor;
             break; 
-        case 3:
-            f = &Strip::oddPairsNotSimultaneous;
+        case GoBackColors: f = Strip::goAndBackColors;
             break;
-        case 4: 
-            f = &Strip::goAndBackOneColor;
+        case MaintainIncrese: f = Strip::maintainIncrese;
             break;
-        default: 
-            f = &Strip::goAndBackColors;
+        case MaintainDecrese: f = Strip::maintainDecrese;
             break;
-        
+        case OddPairsNotSimultaneous: f = Strip::oddPairsNotSimultaneous;
+            break;
+        default: f = Strip::oddPairsNotSimultaneous;
     }
 }
 
