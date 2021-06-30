@@ -3,23 +3,24 @@
 
 
 #define NUMSTRIPS 2
-#define NUMSTRIPSLEDS 8
+#define NUMSTRIPSLEDS 25
 unsigned long timeClock = 0;
 
 Strip* strips[NUMSTRIPS];
 
 void setup(){   
 
-  for(int i = 0; i < NUMSTRIPS; i++){
-    strips[i] = new Strip(NUMSTRIPSLEDS,i+2,100);
-  }
+  
+    strips[0] = new Strip(NUMSTRIPSLEDS,2,100);
+    strips[1] = new Strip(NUMSTRIPSLEDS,26,100);
 
-  strips[0]->changeMode(Pattern::OneByOne);
-  strips[0]->changePrimaryColor(50,0,0);
-  strips[0]->changeSecondaryColor(0,50,0);
-  strips[1]->changeMode(Pattern::OneByOne);
-  strips[1]->changePrimaryColor(0,0,50);
-  strips[1]->changeSecondaryColor(50,0,0);
+    strips[0]->changeMode(Pattern::Rainbow);
+    strips[0]->changePrimaryColor(50,0,0);
+
+    strips[1]->changeMode(Pattern::GoBackColors);
+    strips[1]->changePrimaryColor(50,0,0);
+  
+  
   Serial.begin(9600);
   
 }
@@ -29,9 +30,9 @@ void loop(){
 
     
     for(int i = 0; i < NUMSTRIPS;i++){      
-      Strip* strip = strips[i];
       
-      strip->showSequence();
+      
+      strips[i]->showSequence();
       
     }
 }
