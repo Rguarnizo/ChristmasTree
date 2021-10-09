@@ -39,8 +39,6 @@ void Strip::showSequence(){
 
     if(millis() - previusMillis >= time){        
         previusMillis = millis();
-        Serial.print("Print in time: " );
-        Serial.println(previusMillis);
         (*this.*f)();
     }
     
