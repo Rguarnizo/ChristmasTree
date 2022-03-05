@@ -10,18 +10,30 @@
 
 BluetoothSerial SerialBT;
 
-#define NUMSTRIPS 2
-#define NUMSTRIPSLEDS 25
+#define NUMSTRIPS 12
+#define NUMLEDSSTRIPS 25 
 unsigned long timeClock = 0;
+bool matrix[NUMSTRIPS][NUMLEDSSTRIPS];
 
 Strip* strips[NUMSTRIPS];
+
+enum class Pattern {
+    GoBackOneColor,
+    GoBackColors,
+    MaintainIncrese,
+    MaintainDecrese,
+    OddPairsNotSimultaneous,
+    Rainbow,
+    RainbowCycle,
+    OneByOne,
+};
 
 void setup(){   
 
    SerialBT.begin("Christmass Tree App");
   
-    strips[0] = new Strip(NUMSTRIPSLEDS,2,100);
-    strips[1] = new Strip(NUMSTRIPSLEDS,26,100);
+    strips[0] = new Strip(NUMLEDSSTRIPS,2,100);
+    strips[1] = new Strip(NUMLEDSSTRIPS,26,100);
 
     strips[0]->changeMode(Pattern::Rainbow);
     strips[0]->changePrimaryColor(50,0,0);
@@ -33,7 +45,6 @@ void setup(){
   Serial.begin(9600);
   
 }
-
 
 void loop(){
 
@@ -68,9 +79,20 @@ void loop(){
   }
   
     
-    for(int i = 0; i < NUMSTRIPS;i++){      
+    for(int i = 0; i < NUMSTRIPS;i++){
       strips[i]->showSequence();
     }
+
+    for(int i = 0; i < sizeof(matrix)/sizeof(*matrix); i++){
+    strips[i]->setup(matrix[i]);    
+    } 
+}
+
+
+void matrixTransform(){
+  for(int i = 0; i < sizeof(matrix)/sizeof(*matrix); i++){
+      
+  } 
 }
   
 

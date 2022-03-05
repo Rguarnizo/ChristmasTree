@@ -26,6 +26,14 @@ Strip::~Strip()
 {
 }
 
+void Strip::setup(bool *pattern){
+    for(int i = 0; i < sizeof(pattern)/sizeof(*pattern);i++){
+        if(pattern[i] == 1){
+            this->strip.setPixelColor(led,primaryColor);
+        }      
+    } 
+}
+
 
 unsigned long Strip::getTime(){
     return time;

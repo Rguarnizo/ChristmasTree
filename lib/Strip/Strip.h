@@ -71,6 +71,7 @@ public:
     void rainbow();
     void rainbowCycle();
     void oneByOne();
+    void setup(bool *pattern);
 
 
     uint32_t Wheel(byte WheelPos);
