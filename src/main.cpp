@@ -8,6 +8,12 @@
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
 
+//Probables Fallas:
+// ESP Nuevo Dañado
+// Codigo Diferente entre ESP32
+// Diferente versión de ESP32 (En el dorso dice ESP32S)
+// Carga alta cuando se conectan todas las tiras.
+
 BluetoothSerial SerialBT;
 
 #define NUMSTRIPS 12
@@ -17,16 +23,6 @@ bool matrix[NUMSTRIPS][NUMLEDSSTRIPS];
 
 Strip* strips[NUMSTRIPS];
 
-enum class Pattern {
-    GoBackOneColor,
-    GoBackColors,
-    MaintainIncrese,
-    MaintainDecrese,
-    OddPairsNotSimultaneous,
-    Rainbow,
-    RainbowCycle,
-    OneByOne,
-};
 
 void setup(){   
 
@@ -35,7 +31,7 @@ void setup(){
     strips[0] = new Strip(NUMLEDSSTRIPS,2,100);
     strips[1] = new Strip(NUMLEDSSTRIPS,26,100);
 
-    strips[0]->changeMode(Pattern::Rainbow);
+    strips[0]->changeMode(Pattern::MaintainIncrese);
     strips[0]->changePrimaryColor(50,0,0);
 
     strips[1]->changeMode(Pattern::GoBackColors);
